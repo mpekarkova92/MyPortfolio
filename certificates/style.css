@@ -1,0 +1,66 @@
+.certificate-card {
+    background-color: #333;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px #80076f, 0 8px 25px rgba(255, 255, 255, 0.4);
+}
+
+.certificate-card h3 {
+    color: #80076f !important;
+    font-family: 'Betania Patmos In', serif;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.certificate-card p {
+    color: #ccc;
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+
+.certificate-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    background-color: #80076f;
+    color: #f0f0f0;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 0.95em;
+}
+
+.certificate-link:hover {
+    background-color: #a00d8f;
+    color: #f0f0f0;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #80076f;
+}
+
+.back-button {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 30px auto;
+    padding: 15px 30px;
+    background-color: #80076f;
+    color: #f0f0f0;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 0.95em;
+    text-align: center;
+}
+
+.back-button:hover {
+    background-color: #a00d8f;
+    color: #f0f0f0;
+    transform: translateX(-5px);
+}

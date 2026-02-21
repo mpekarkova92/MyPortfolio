@@ -1,0 +1,455 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+}
+h2, h3 {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #80076f  !important; 
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.4), 1px 1px 1px rgba(0, 0, 0, 0.8), 3px 3px 4px rgba(0, 0, 0, 0.9);
+}
+
+h1 {
+    text-shadow: #80076f 8px 8px 10px;
+    font-family: 'League Script', cursive !important;
+    font-size: 100px !important;
+}
+/* tělo, celá stránka tmavá s animovaným pozadím */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #f0f0f0;
+    line-height: 1.6;
+    
+    /* Zde je ten magický animovaný přechod v tvých barvách */
+    background: linear-gradient(-45deg, #121212, #180315, #121212, #7c767b);
+    background-size: 400% 400%;
+    animation: pozadiAnimace 10s ease infinite;
+    
+    /* Tohle zajistí, že animace zůstane na místě při scrollování */
+    background-attachment: fixed; 
+}
+/* Animované pozadí - létající linky */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Zaručí, že to bude úplně vzadu za vším */
+    pointer-events: none; /* Zabrání tomu, aby plátno blokovalo klikání na tvé odkazy a karty */
+}
+
+/* Klíčové snímky pro tu plynulou animaci pozadí */
+@keyframes pozadiAnimace {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+/* nav menu */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #1f1f1f;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.4);
+    margin: auto;
+}
+nav:hover {
+    box-shadow: 0 0 20px #80076f,0 8px 25px rgba(255, 255, 255, 0.4);
+}
+
+nav .logo img {
+    height: 100px;
+    border-radius: 90px 70px;
+    padding: 10px;
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav .nav-links li a {
+    color: #f0f0f0;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav .nav-links li a:hover {
+    background-color: transparent;
+    transform: scale(1.2);
+    text-shadow: 0 0 8px rgba(128, 7, 111, 0.9), 0 0 12px rgba(128, 7, 111, 0.7);
+}
+
+/* header, úvodní sekce *//* header, úvodní sekce */
+header {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #0e0e0e;
+    scroll-margin-top: 250px;
+    
+    /* Přidané zúžení a vycentrování */
+    max-width: 1400px; /* Toto omezí šířku a vytvoří okraje po stranách */
+    margin: 40px auto; /* Auto vycentruje obsah, 40px udělá mezeru od navigace */
+    border-radius: 16px; /* Jemně zakulacené rohy */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Lehký stín pro 3D efekt */
+}
+
+/* sekce o mně, znalosti, projekty atd. */
+section {
+    padding: 60px 40px; /* Zvětšila jsem trochu vnitřní odsazení po stranách */
+    background-color: #1f1f1f;
+    scroll-margin-top: 150px;
+    
+    /* Přidané zúžení a vycentrování */
+    max-width: 1400px; 
+    margin: 0 auto 40px auto; /* Vycentrování a mezera 40px mezi sekcemi dole */
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #80076f !important;
+}
+
+section h3 {
+    color: #80076f !important;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.4), 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* seznam znalostí */
+#skills {
+    background-color: #0e0e0e;
+}
+
+#skills ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Samotná karta - opraveno na pixely */
+#skills li {
+    max-width: 150px; /* Tady jsme vyměnily 4cm za 150px */
+    width: 100%;
+    
+    /* Zbytek zůstává úplně stejný... */
+    display: grid; 
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    cursor: pointer;
+    padding: 0; 
+    background: transparent;
+    box-shadow: none; 
+}
+
+/* Otočení karty při kliknutí (BEZ zvětšování) */
+#skills li.active {
+    transform: rotateY(180deg);
+}
+
+/* Hover efekt - jemné poskočení nahoru bez zvětšování */
+#skills li:hover {
+    transform: translateY(-10px);
+}
+#skills li.active:hover {
+    transform: rotateY(180deg) translateY(-10px);
+}
+
+/* Společné styly pro obě strany karty */
+#skills li strong, 
+#skills li p {
+    /* Tohle umístí přední i zadní stranu přesně přes sebe */
+    grid-area: 1 / 1; 
+    
+    backface-visibility: hidden; /* Skryje odvrácenou stranu */
+    border-radius: 8px;
+    padding: 15px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Přední strana (Název technologie) */
+#skills li strong {
+    /* Jemný tmavý přechod pro 3D efekt místo obyčejné šedé */
+    background: linear-gradient(145deg, #2c2c2c, #121212);
+    /* Tenký fialový rámeček kartu opticky odlehčí */
+    border: 1px solid rgba(128, 7, 111, 0.3);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    color: #f0f0f0; /* Trochu jemnější bílá, kterou už máš v body */
+    margin: 0;
+}
+
+/* Zadní strana (Tvůj text) */
+#skills li p {
+    /* Tvůj oblíbený přechod z certifikátů, natočený do úhlopříčky */
+    background: linear-gradient(145deg, #a00d8f, #0e0e0e);
+    border: 1px solid #80076f;
+    
+    color: #fff;
+    transform: rotateY(180deg); /* Zadní strana je otočená */
+    margin: 0;
+    
+    /* Vyladění textu, aby nepůsobil tak masivně */
+    font-size: 0.85em;
+    line-height: 1.5;
+    
+    /* Zarovnání textu odshora dolů */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+/* Zářivý efekt při najetí a otočení (aplikováno na vnitřní strany) */
+#skills li:hover strong,
+#skills li.active p {
+    box-shadow: 0 0 20px #80076f, 0 8px 25px rgba(255, 255, 255, 0.4);
+}
+
+/* grid pro projekty */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* karty projektů */
+.card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.8s ease, box-shadow 0.3s ease;
+    background-color: #333;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #f0f0f0;
+}
+
+/* hover efekt pro karty */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px #80076f, 0 8px 25px rgba(255, 255, 255, 0.4);
+}
+
+/* overlay pro karty */
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+}
+
+.card h3 {
+    color: #80076f !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.4), 1px 1px 1px rgba(0, 0, 0, 0.8), 3px 3px 4px rgba(0, 0, 0, 0.9);
+    font-size: 1.3em !important;
+    margin: 0 0 10px 0;
+}
+
+.card-overlay p {
+    color: #e0e0e0;
+    font-size: 0.9em;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.card-overlay p {
+    color: #e0e0e0;
+    font-size: 0.95em;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* kontaktní sekce */
+#contact h2 {
+    color: #80076f !important;
+}
+
+#contact h3 {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 12px rgba(255, 255, 255, 0.8), 1px 1px 2px rgba(0, 0, 0, 0.9);
+    color: #80076f !important;
+}
+#contact {
+    background-color: #0e0e0e;
+    text-align: center;
+    padding-bottom: 60px;
+}
+
+#contact a img {
+    vertical-align: middle;
+    margin-left: 8px;
+    transition: transform 0.5s ease;
+}
+
+#contact a img:hover {
+    transform: scale(1.2);
+}
+
+#contact a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+/* Šipka nahoru */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #80076f;
+    color: #f0f0f0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(128, 7, 111, 0.4);
+    z-index: 99;
+}
+
+.back-to-top:hover {
+    background-color: #a00d8f;
+    box-shadow: 0 0 20px #80076f;
+    transform: translateY(-5px);
+}
+
+/* Certifikáty sekce */
+#certificates {
+    background-color: #0e0e0e;
+}
+
+.certificates-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.certificate-item {
+    background:linear-gradient(90deg, #a00d8f, #0e0e0e);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: transform 0.8s ease, box-shadow 0.8s ease;
+    cursor: pointer;
+}
+
+.certificate-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px #80076f, 0 8px 25px rgba(255, 255, 255, 0.4);
+    background: linear-gradient(90deg, #0e0e0e, #a00d8f);
+}
+
+.certificate-item h3 {
+    color: #f0f0f0 !important;
+    font-size: 0.95em !important;
+    margin: 0;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.4), 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.certificate-item h3 a {
+    color: #f0f0f0 !important;
+    text-decoration: none;
+    transition: color 0.8s ease;
+    font-size: 1em;
+    display: block;
+    padding: 20px;
+    width: 100%;
+    cursor: pointer;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 12px rgba(255, 255, 255, 0.8), 1px 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.certificate-item:hover h3 a {
+    color: #f0f0f0;
+}
+
+.certificate-item p {
+    color: #ccc;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+#about p {
+    color: #ccc;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* Responzivní design pro menší obrazovky */
+@media (max-width: 768px) {
+    nav .nav-links {
+        flex-direction: row; /* položky pod sebe */
+        gap: 10px;
+    }
+    h1 {
+        font-size: 50px !important;
+    }
+}
+/* Výchozí stav - sekce je průhledná a posunutá o 40px dolů */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, visibility; /* Pomáhá prohlížeči s plynulostí */
+}
+
+/* Stav po zobrazení - sekce je plně viditelná a na svém místě */
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: none;
+}
