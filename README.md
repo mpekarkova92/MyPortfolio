@@ -21,4 +21,26 @@ Tento repozitář obsahuje kromě samotné vizitky také odkazy na mé klíčov�
 ![Ukázka webu](img/portfolio.png)
 
 
-![Ukázka webu](img/portfolio(2).png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+![Ukázka](img/portfolio(2).png)
