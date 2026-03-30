@@ -17,3 +17,5 @@ Tento repozitář obsahuje kromě samotné vizitky také odkazy na mé klíčov�
 1. **ToDoList**: PHP/MySQL aplikace pro správu úkolů.
 2. **MyEshop**: Komplexní e-commerce řešení ve frameworku Nette.
 3. **PojisteniApp**: Ukázka objektově orientovaného programování v PHP.
+
+![Ukázka webu](img/portfolio.png)
