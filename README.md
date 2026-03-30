@@ -19,3 +19,4 @@ Tento repozitář obsahuje kromě samotné vizitky také odkazy na mé klíčov�
 3. **PojisteniApp**: Ukázka objektově orientovaného programování v PHP.
 
 ![Ukázka webu](img/portfolio.png)
+![Ukázka webu](img/portfolio(2).png)
